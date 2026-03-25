@@ -387,7 +387,7 @@
       <div class="hidden md:flex items-center gap-8">
         <a href="#services" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">Services</a>
         <a href="#comment" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">Comment &ccedil;a marche</a>
-        <a href="#zones" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">Zones</a>
+        <a href="#zones" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">Acc&egrave;s</a>
         <a href="#contact" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">Contact</a>
       </div>
 
@@ -419,7 +419,7 @@
     <div class="max-w-6xl mx-auto px-4 pb-6 flex flex-col gap-1">
       <a href="#services" onclick="closeMobileMenu()" class="text-white/80 font-grotesk font-medium text-lg py-3 px-4 rounded-xl hover:bg-white/05 transition-colors">Services</a>
       <a href="#comment" onclick="closeMobileMenu()" class="text-white/80 font-grotesk font-medium text-lg py-3 px-4 rounded-xl hover:bg-white/05 transition-colors">Comment &ccedil;a marche</a>
-      <a href="#zones" onclick="closeMobileMenu()" class="text-white/80 font-grotesk font-medium text-lg py-3 px-4 rounded-xl hover:bg-white/05 transition-colors">Zones d'intervention</a>
+      <a href="#zones" onclick="closeMobileMenu()" class="text-white/80 font-grotesk font-medium text-lg py-3 px-4 rounded-xl hover:bg-white/05 transition-colors">Acc&egrave;s</a>
       <a href="#contact" onclick="closeMobileMenu()" class="text-white/80 font-grotesk font-medium text-lg py-3 px-4 rounded-xl hover:bg-white/05 transition-colors">Contact</a>
       <div class="mt-2 pt-4" style="border-top: 1px solid rgba(255,255,255,0.08)">
         <button onclick="closeMobileMenu(); openCallModal();"
@@ -586,6 +586,9 @@
              style="background: radial-gradient(circle at 100% 100%, rgba(82,155,215,0.10) 0%, transparent 70%);"></div>
 
         <div class="relative z-10 text-white/55 font-outfit text-lg leading-relaxed space-y-4">
+          <p class="text-white font-grotesk font-bold text-2xl">
+            Le garage, on l&rsquo;a repens&eacute;.
+          </p>
           <p>
             Vous connaissez la situation&nbsp;: un voyant s'allume, un bruit appara&icirc;t, la r&eacute;vision est en retard. Vous cherchez un garage. Et l&agrave;, c'est la loterie. Prix flous, d&eacute;lais vagues, le m&eacute;canicien qui ne rappelle jamais.
           </p>
@@ -925,13 +928,10 @@
           <div>
             <span class="text-brand-300 text-sm font-grotesk font-semibold uppercase tracking-widest mb-3 block">O&ugrave; nous trouver</span>
             <h2 class="font-grotesk font-bold text-4xl text-white mb-4">
-              Toulon &<br /><span class="text-gradient">tout le Var.</span>
+              DRD MECA,<br /><span class="text-gradient">&agrave; Toulon.</span>
             </h2>
-            <p class="text-white/55 font-outfit leading-relaxed mb-4">
-              DRD MECA est situ&eacute; au 15 Rue Gouverneur G&eacute;n&eacute;ral Ebou&eacute; &agrave; Toulon (83200). On accueille les v&eacute;hicules de tout le Var : La Seyne-sur-Mer, Hy&egrave;res, Ollioules, Six-Fours, Sanary, Bandol, La Valette, La Garde, Le Pradet, Carqueiranne&hellip;
-            </p>
             <p class="text-white/55 font-outfit leading-relaxed mb-6">
-              Un doute sur votre secteur ? Appelez, on vous dit tout de suite.
+              15 Rue Gouverneur G&eacute;n&eacute;ral Ebou&eacute;, 83200 Toulon. Un garage fixe, avec un m&eacute;canicien disponible du lundi au samedi.
             </p>
             <p class="text-white/40 font-outfit text-sm mb-6">Lun&ndash;Ven 8h30&ndash;12h30 / 14h&ndash;18h &middot; Sam 8h30&ndash;12h30</p>
             <button onclick="openCallModal()" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold font-grotesk text-sm cursor-pointer">
@@ -1278,8 +1278,8 @@
     // ── LEAFLET — Carte zones d'intervention ──
     (function () {
       const map = L.map('drd-meca-map', {
-        center: [43.1278, 5.9306],
-        zoom: 10,
+        center: [43.1432, 5.9025],
+        zoom: 16,
         zoomControl: true,
         attributionControl: false,
         scrollWheelZoom: false
@@ -1292,15 +1292,6 @@
         maxZoom: 20
       }).addTo(map);
 
-      L.circle([43.1278, 5.9306], {
-        color: '#529BD7',
-        fillColor: '#529BD7',
-        fillOpacity: 0.10,
-        weight: 1.5,
-        dashArray: '6, 5',
-        radius: 20000
-      }).addTo(map);
-
       const icon = L.divIcon({
         className: '',
         html: '<div style="width:14px;height:14px;background:#529BD7;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 4px rgba(82,155,215,0.25),0 0 16px rgba(82,155,215,0.8);"></div>',
@@ -1308,9 +1299,9 @@
         iconAnchor: [7, 7]
       });
 
-      L.marker([43.1278, 5.9306], { icon })
+      L.marker([43.1432, 5.9025], { icon })
         .addTo(map)
-        .bindPopup('<strong style="color:#fff;font-family:sans-serif">DRD MECA</strong><br><span style="color:#aaa;font-size:12px">Garage auto · Toulon & Var</span>');
+        .bindPopup('<strong style="color:#fff;font-family:sans-serif">DRD MECA</strong><br><span style="color:#aaa;font-size:12px">15 Rue Gouverneur G&eacute;n&eacute;ral Ebou&eacute;, Toulon</span>');
 
       map.addControl(L.control.attribution({
         prefix: '<span style="color:rgba(255,255,255,0.25);font-size:10px">&copy; OpenStreetMap &middot; CARTO</span>'
