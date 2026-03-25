@@ -1116,7 +1116,7 @@
   <div id="callModal"
        onclick="if(event.target===this) closeCallModal()"
        class="fixed inset-0 z-[100] flex items-center justify-center px-4"
-       style="display:none !important; background: rgba(6,7,20,0.85); backdrop-filter: blur(12px);">
+       style="display:none; background: rgba(6,7,20,0.92);">
 
     <div id="callModalBox"
          class="glass-strong rounded-3xl p-10 max-w-sm w-full text-center relative"
@@ -1248,27 +1248,23 @@
 
     function openCallModal() {
       modal.style.display = 'flex';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          if (isMobileDevice()) {
-            modalBox.classList.add('modal-open');
-          } else {
-            modalBox.style.transform = 'scale(1)';
-            modalBox.style.opacity   = '1';
-          }
-        });
-      });
+      // Forcer un reflow avant d'animer (fix iOS Safari)
+      void modal.offsetHeight;
+      modalBox.style.transform = 'scale(1)';
+      modalBox.style.opacity = '1';
+      if (isMobileDevice()) {
+        modalBox.classList.add('modal-open');
+      }
       document.body.style.overflow = 'hidden';
     }
 
     function closeCallModal() {
+      modalBox.style.transform = 'scale(0.92)';
+      modalBox.style.opacity = '0';
       if (isMobileDevice()) {
         modalBox.classList.remove('modal-open');
-      } else {
-        modalBox.style.transform = 'scale(0.92)';
-        modalBox.style.opacity   = '0';
       }
-      setTimeout(() => {
+      setTimeout(function() {
         modal.style.display = 'none';
         document.body.style.overflow = '';
       }, 350);
